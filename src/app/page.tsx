@@ -1,10 +1,11 @@
+// This is a test comment to ensure a new commit is created and picked up by Vercel.
 import Image from 'next/image'
 import Link from 'next/link'
 import PropertyCard from '@/components/PropertyCard'
 
 const featuredProperties = [
   {
-    id: 1,
+    id: '1',
     title: 'Luxury Villa in Bahria Town',
     price: 85000000,
     location: 'Bahria Town, Lahore',
@@ -16,7 +17,7 @@ const featuredProperties = [
     area: 5000,
   },
   {
-    id: 2,
+    id: '2',
     title: 'Modern Apartment Complex',
     price: 25000000,
     location: 'DHA Phase 6, Lahore',
@@ -28,7 +29,7 @@ const featuredProperties = [
     area: 2000,
   },
   {
-    id: 3,
+    id: '3',
     title: 'Commercial Plaza',
     price: 150000000,
     location: 'Gulberg, Lahore',
