@@ -17,7 +17,7 @@ export default function Map({ center, zoom = 15 }: MapProps) {
     if (!mapRef.current) return
 
     const initMap = async () => {
-      const { Map } = await google.maps.importLibrary('maps') as google.maps.MapsLibrary
+      const { Map } = await (window as any).google.maps.importLibrary('maps') as google.maps.MapsLibrary
       
       const map = new Map(mapRef.current!, {
         center,
@@ -47,7 +47,7 @@ export default function Map({ center, zoom = 15 }: MapProps) {
         ],
       })
 
-      new google.maps.Marker({
+      new (window as any).google.maps.Marker({
         position: center,
         map,
         title: 'Pak Lahore Property',
