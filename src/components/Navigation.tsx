@@ -12,31 +12,25 @@ export default function Navigation() {
   }
 
   return (
-    <nav className="bg-white shadow-md fixed w-full z-50">
+    <nav className="bg-white/80 backdrop-blur shadow-lg fixed w-full z-50">
       <div className="container-custom">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <span className="text-2xl font-bold text-primary">Pak Lahore Property</span>
+            <span className="text-2xl font-bold text-primary">Pak Property</span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-gray-700 hover:text-primary transition-colors duration-300">
-              Home
-            </Link>
-            <Link href="/properties" className="text-gray-700 hover:text-primary transition-colors duration-300">
-              Properties
-            </Link>
-            <Link href="/services" className="text-gray-700 hover:text-primary transition-colors duration-300">
-              Services
-            </Link>
-            <Link href="/about" className="text-gray-700 hover:text-primary transition-colors duration-300">
-              About
-            </Link>
-            <Link href="/contact" className="text-gray-700 hover:text-primary transition-colors duration-300">
-              Contact
-            </Link>
+            {['/', '/properties', '/services', '/about', '/contact'].map((path, idx) => (
+              <Link
+                key={path}
+                href={path}
+                className={`text-gray-700 hover:text-primary transition-colors duration-300 ${typeof window !== 'undefined' && window.location.pathname === path ? 'font-bold underline underline-offset-8' : ''}`}
+              >
+                {['Home', 'Properties', 'Services', 'About', 'Contact'][idx]}
+              </Link>
+            ))}
           </div>
 
           {/* Mobile Menu Button */}
@@ -66,41 +60,16 @@ export default function Navigation() {
         {isMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <Link
-                href="/"
-                className="block px-3 py-2 rounded-md text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-300"
-                onClick={toggleMenu}
-              >
-                Home
-              </Link>
-              <Link
-                href="/properties"
-                className="block px-3 py-2 rounded-md text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-300"
-                onClick={toggleMenu}
-              >
-                Properties
-              </Link>
-              <Link
-                href="/services"
-                className="block px-3 py-2 rounded-md text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-300"
-                onClick={toggleMenu}
-              >
-                Services
-              </Link>
-              <Link
-                href="/about"
-                className="block px-3 py-2 rounded-md text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-300"
-                onClick={toggleMenu}
-              >
-                About
-              </Link>
-              <Link
-                href="/contact"
-                className="block px-3 py-2 rounded-md text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-300"
-                onClick={toggleMenu}
-              >
-                Contact
-              </Link>
+              {['/', '/properties', '/services', '/about', '/contact'].map((path, idx) => (
+                <Link
+                  key={path}
+                  href={path}
+                  className={`block px-3 py-2 rounded-md text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-300 ${typeof window !== 'undefined' && window.location.pathname === path ? 'font-bold underline underline-offset-8' : ''}`}
+                  onClick={toggleMenu}
+                >
+                  {['Home', 'Properties', 'Services', 'About', 'Contact'][idx]}
+                </Link>
+              ))}
             </div>
           </div>
         )}

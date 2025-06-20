@@ -25,7 +25,8 @@ export default function PropertyCard({
   bedrooms,
   bathrooms,
   area,
-}: PropertyCardProps) {
+  isFeatured = false,
+}: PropertyCardProps & { isFeatured?: boolean }) {
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('en-PK', {
       style: 'currency',
@@ -35,7 +36,7 @@ export default function PropertyCard({
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105">
+    <div className="bg-white rounded-lg shadow-2xl border border-gray-200 overflow-hidden transition-transform duration-300 hover:scale-105 relative">
       <div className="relative h-48">
         <Image
           src={imageUrl}
@@ -43,6 +44,9 @@ export default function PropertyCard({
           fill
           className="object-cover"
         />
+        {isFeatured && (
+          <span className="absolute top-4 left-4 bg-yellow-400 text-white px-3 py-1 rounded-full text-xs font-bold shadow">Featured</span>
+        )}
         <div className="absolute top-4 right-4">
           <span className={`px-3 py-1 rounded-full text-sm font-semibold ${
             status === 'for-sale' ? 'bg-primary text-white' : 'bg-secondary text-white'
