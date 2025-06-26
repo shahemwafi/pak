@@ -50,7 +50,7 @@ export default function Map({ center, zoom = 15 }: MapProps) {
       new (window as any).google.maps.Marker({
         position: center,
         map,
-        title: 'Pak Lahore Property',
+        title: 'Pak Property',
       })
     }
 

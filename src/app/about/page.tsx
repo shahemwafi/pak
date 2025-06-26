@@ -78,44 +78,54 @@ export default function AboutPage() {
         {/* Team Section */}
         <div>
           <h2 className="text-3xl font-bold text-center mb-12">Our Team</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="relative w-48 h-48 mx-auto mb-4 rounded-full overflow-hidden">
                 <Image
                   src="/images/team1.jpg"
-                  alt="Team Member"
+                  alt="Chairman Sufi Riaz Ahmad"
                   fill
                   className="object-cover"
                 />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Ahmed Khan</h3>
-              <p className="text-gray-600">Founder & CEO</p>
+              <h3 className="text-xl font-semibold mb-2">Chairman Sufi Riaz Ahmad</h3>
+              <p className="text-gray-600">Chairman</p>
             </div>
-
             <div className="text-center">
               <div className="relative w-48 h-48 mx-auto mb-4 rounded-full overflow-hidden">
                 <Image
                   src="/images/team2.jpg"
-                  alt="Team Member"
+                  alt="CEO Muhammad Zahak Riaz"
                   fill
                   className="object-cover"
                 />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Sara Malik</h3>
-              <p className="text-gray-600">Property Consultant</p>
+              <h3 className="text-xl font-semibold mb-2">CEO Muhammad Zahak Riaz</h3>
+              <p className="text-gray-600">CEO</p>
             </div>
-
             <div className="text-center">
               <div className="relative w-48 h-48 mx-auto mb-4 rounded-full overflow-hidden">
                 <Image
                   src="/images/team3.jpg"
-                  alt="Team Member"
+                  alt="Managing Director Muhammad Shahem Riaz"
                   fill
                   className="object-cover"
                 />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Usman Ali</h3>
-              <p className="text-gray-600">Investment Advisor</p>
+              <h3 className="text-xl font-semibold mb-2">Managing Director Muhammad Shahem Riaz</h3>
+              <p className="text-gray-600">Managing Director</p>
+            </div>
+            <div className="text-center">
+              <div className="relative w-48 h-48 mx-auto mb-4 rounded-full overflow-hidden">
+                <Image
+                  src="/images/team4.jpg"
+                  alt="Property Consultant Muhammad Ahmad"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Property Consultant Muhammad Ahmad</h3>
+              <p className="text-gray-600">Property Consultant</p>
             </div>
           </div>
         </div>

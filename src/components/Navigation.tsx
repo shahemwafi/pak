@@ -3,9 +3,11 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const pathname = usePathname()
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -26,7 +28,7 @@ export default function Navigation() {
               <Link
                 key={path}
                 href={path}
-                className={`text-gray-700 hover:text-primary transition-colors duration-300 ${typeof window !== 'undefined' && window.location.pathname === path ? 'font-bold underline underline-offset-8' : ''}`}
+                className={`text-gray-700 hover:text-primary transition-colors duration-300 ${pathname === path ? 'font-bold underline underline-offset-8' : ''}`}
               >
                 {['Home', 'Properties', 'Services', 'About', 'Contact'][idx]}
               </Link>
@@ -64,7 +66,7 @@ export default function Navigation() {
                 <Link
                   key={path}
                   href={path}
-                  className={`block px-3 py-2 rounded-md text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-300 ${typeof window !== 'undefined' && window.location.pathname === path ? 'font-bold underline underline-offset-8' : ''}`}
+                  className={`block px-3 py-2 rounded-md text-gray-700 hover:text-primary hover:bg-gray-50 transition-colors duration-300 ${pathname === path ? 'font-bold underline underline-offset-8' : ''}`}
                   onClick={toggleMenu}
                 >
                   {['Home', 'Properties', 'Services', 'About', 'Contact'][idx]}
