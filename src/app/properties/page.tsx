@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import PropertyCard from '@/components/PropertyCard'
+import Link from 'next/link'
 
 // Mock data for properties
 const mockProperties = [
@@ -106,6 +107,11 @@ export default function PropertiesPage() {
             <p className="text-gray-600 text-lg">No properties found matching your criteria.</p>
           </div>
         )}
+        <Link href="/admin" className="fixed bottom-8 right-8 z-[100000] bg-blue-600 text-white p-4 rounded-full shadow-lg border-2 border-white hover:bg-blue-800 transition-colors flex items-center justify-center" title="Admin Panel">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 3.75a.75.75 0 01.75 0l1.5.75a.75.75 0 01.38.99l-.38.99a.75.75 0 01-.99.38l-1.5-.75a.75.75 0 01-.38-.99l.38-.99a.75.75 0 01.99-.38zM4.5 9.75a.75.75 0 01.75 0l1.5.75a.75.75 0 01.38.99l-.38.99a.75.75 0 01-.99.38l-1.5-.75a.75.75 0 01-.38-.99l.38-.99a.75.75 0 01.99-.38zM19.5 9.75a.75.75 0 01.75 0l1.5.75a.75.75 0 01.38.99l-.38.99a.75.75 0 01-.99.38l-1.5-.75a.75.75 0 01-.38-.99l.38-.99a.75.75 0 01.99-.38zM12 15.75a3.75 3.75 0 100-7.5 3.75 3.75 0 000 7.5z" />
+          </svg>
+        </Link>
       </div>
     </div>
   )
