@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react"
 
+const ADMIN_PASSWORD = "sufi@786"
+
 interface Property {
   _id?: string
   title: string
@@ -32,10 +34,13 @@ export default function AdminPage() {
   const [form, setForm] = useState<Property>(emptyProperty)
   const [editingId, setEditingId] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
+  const [authed, setAuthed] = useState(false)
+  const [pw, setPw] = useState("")
+  const [pwError, setPwError] = useState("")
 
   useEffect(() => {
-    fetchProperties()
-  }, [])
+    if (authed) fetchProperties()
+  }, [authed])
 
   async function fetchProperties() {
     const res = await fetch("/api/properties")
@@ -85,6 +90,35 @@ export default function AdminPage() {
     })
     setLoading(false)
     fetchProperties()
+  }
+
+  function handlePwSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    if (pw === ADMIN_PASSWORD) {
+      setAuthed(true)
+      setPwError("")
+    } else {
+      setPwError("Incorrect password")
+    }
+  }
+
+  if (!authed) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen">
+        <form onSubmit={handlePwSubmit} className="bg-white p-8 rounded shadow flex flex-col gap-4">
+          <h2 className="text-2xl font-bold mb-2">Admin Login</h2>
+          <input
+            type="password"
+            placeholder="Enter admin password"
+            value={pw}
+            onChange={e => setPw(e.target.value)}
+            className="border p-2 rounded"
+          />
+          {pwError && <p className="text-red-500">{pwError}</p>}
+          <button type="submit" className="bg-primary text-white px-4 py-2 rounded">Login</button>
+        </form>
+      </div>
+    )
   }
 
   return (
