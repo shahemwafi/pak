@@ -79,13 +79,13 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="relative h-[600px]">
         <Image
-          src="/images/my-landing-image.jpg"
+          src="/images/landing.jpg"
           alt="Landing Page Background"
           fill
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-black bg-opacity-50">
+        <div className="absolute inset-0 bg-black bg-opacity-20">
           <div className="container-custom h-full flex flex-col justify-center items-center text-center text-white">
             <h1 className="text-5xl font-bold mb-6">Find Your Dream Property in Lahore</h1>
             <p className="text-xl mb-8 max-w-2xl">
