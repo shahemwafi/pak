@@ -91,6 +91,12 @@ export default function Footer() {
 
         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
           <p>&copy; {new Date().getFullYear()} Pak Lahore Property. All rights reserved.</p>
+          <div className="flex flex-col items-center justify-center mt-4 space-y-2">
+            <a href="https://www.alids.io" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-sm text-gray-300 hover:text-primary transition-colors">
+              <img src="/images/alids.png" alt="ALIDS Logo" className="h-6 w-auto" />
+              <span>Powered by ALIDS Software</span>
+            </a>
+          </div>
         </div>
       </div>
     </footer>
