@@ -79,8 +79,8 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="relative h-[600px]">
         <Image
-          src="/images/hero.jpg"
-          alt="Luxury Property in Lahore"
+          src="/images/my-landing-image.jpg"
+          alt="Landing Page Background"
           fill
           className="object-cover"
           priority
