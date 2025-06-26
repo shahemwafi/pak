@@ -124,24 +124,119 @@ export default function AdminPage() {
   return (
     <div className="container-custom py-12">
       <h1 className="text-3xl font-bold mb-8">Admin Panel - Manage Properties</h1>
-      <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 bg-white p-6 rounded-lg shadow">
-        <input name="title" value={form.title} onChange={handleChange} placeholder="Title" className="border p-2 rounded" required />
-        <input name="price" type="number" value={form.price} onChange={handleChange} placeholder="Price" className="border p-2 rounded" required />
-        <input name="location" value={form.location} onChange={handleChange} placeholder="Location" className="border p-2 rounded" required />
-        <select name="type" value={form.type} onChange={handleChange} className="border p-2 rounded">
-          <option value="residential">Residential</option>
-          <option value="commercial">Commercial</option>
-        </select>
-        <select name="status" value={form.status} onChange={handleChange} className="border p-2 rounded">
-          <option value="for-sale">For Sale</option>
-          <option value="for-rent">For Rent</option>
-        </select>
-        <input name="imageUrl" value={form.imageUrl} onChange={handleChange} placeholder="Image URL" className="border p-2 rounded" required />
-        <input name="bedrooms" type="number" value={form.bedrooms} onChange={handleChange} placeholder="Bedrooms" className="border p-2 rounded" />
-        <input name="bathrooms" type="number" value={form.bathrooms} onChange={handleChange} placeholder="Bathrooms" className="border p-2 rounded" />
-        <input name="area" type="number" value={form.area} onChange={handleChange} placeholder="Area (sq ft)" className="border p-2 rounded" required />
-        <button type="submit" className="bg-primary text-white px-4 py-2 rounded mt-2" disabled={loading}>{editingId ? "Update" : "Add"} Property</button>
-        {editingId && <button type="button" className="bg-gray-300 text-gray-700 px-4 py-2 rounded mt-2" onClick={() => { setForm(emptyProperty); setEditingId(null) }}>Cancel</button>}
+      <form
+        onSubmit={handleSubmit}
+        className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-white p-8 rounded-xl shadow mb-8"
+      >
+        <div>
+          <label className="block font-semibold mb-1">Title</label>
+          <input
+            type="text"
+            placeholder="e.g. Luxury Villa in Bahria Town"
+            value={form.title}
+            onChange={(e) => setForm({ ...form, title: e.target.value })}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg mb-2"
+            required
+          />
+        </div>
+        <div>
+          <label className="block font-semibold mb-1">Price (PKR)
+          </label>
+          <input
+            type="number"
+            placeholder="e.g. 85000000"
+            value={form.price}
+            onChange={(e) => setForm({ ...form, price: Number(e.target.value) })}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg mb-2"
+            required
+          />
+        </div>
+        <div>
+          <label className="block font-semibold mb-1">Location</label>
+          <input
+            type="text"
+            placeholder="e.g. Bahria Town, Lahore"
+            value={form.location}
+            onChange={(e) => setForm({ ...form, location: e.target.value })}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg mb-2"
+            required
+          />
+        </div>
+        <div>
+          <label className="block font-semibold mb-1">Type</label>
+          <select
+            value={form.type}
+            onChange={(e) => setForm({ ...form, type: e.target.value as 'residential' | 'commercial' })}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg mb-2"
+            required
+          >
+            <option value="residential">Residential</option>
+            <option value="commercial">Commercial</option>
+          </select>
+        </div>
+        <div>
+          <label className="block font-semibold mb-1">Status</label>
+          <select
+            value={form.status}
+            onChange={(e) => setForm({ ...form, status: e.target.value as 'for-sale' | 'for-rent' })}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg mb-2"
+            required
+          >
+            <option value="for-sale">For Sale</option>
+            <option value="for-rent">For Rent</option>
+          </select>
+        </div>
+        <div>
+          <label className="block font-semibold mb-1">Image URL</label>
+          <input
+            type="text"
+            placeholder="e.g. /images/property1.jpg or https://..."
+            value={form.imageUrl}
+            onChange={(e) => setForm({ ...form, imageUrl: e.target.value })}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg mb-2"
+            required
+          />
+        </div>
+        <div>
+          <label className="block font-semibold mb-1">Bedrooms</label>
+          <input
+            type="number"
+            placeholder="e.g. 5"
+            value={form.bedrooms}
+            onChange={(e) => setForm({ ...form, bedrooms: Number(e.target.value) })}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg mb-2"
+          />
+        </div>
+        <div>
+          <label className="block font-semibold mb-1">Bathrooms</label>
+          <input
+            type="number"
+            placeholder="e.g. 4"
+            value={form.bathrooms}
+            onChange={(e) => setForm({ ...form, bathrooms: Number(e.target.value) })}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg mb-2"
+          />
+        </div>
+        <div>
+          <label className="block font-semibold mb-1">Area (sq ft)</label>
+          <input
+            type="number"
+            placeholder="e.g. 5000"
+            value={form.area}
+            onChange={(e) => setForm({ ...form, area: Number(e.target.value) })}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg mb-2"
+            required
+          />
+        </div>
+        <div className="md:col-span-2 flex items-end">
+          <button
+            type="submit"
+            className="w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-3 rounded-lg transition-colors"
+            disabled={loading}
+          >
+            {editingId ? 'Update Property' : 'Add Property'}
+          </button>
+        </div>
       </form>
       <h2 className="text-2xl font-bold mb-4">All Properties</h2>
       <div className="overflow-x-auto">
